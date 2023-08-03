@@ -21,7 +21,7 @@ on:
     
 jobs:
   build:
-    if: ${{ github.event.inputs.skipbuildjob == 'false' }}
+    if: ${{ github.event.inputs.skipbuildjob == 'false' || github.event_name == 'push'}}
     runs-on: ubuntu-latest
     steps:
     - name: Test run 1
