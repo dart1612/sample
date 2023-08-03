@@ -1,0 +1,32 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: GH Action Build
+
+on:
+  pull_request:
+     branches: [ main ]
+  workflow_dispatch:
+   inputs:
+    skipbuildjob:
+        description: Skip Build Job
+        type: boolean
+        required: false
+        default: false
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test run 1
+      run: echo "This is test 1"
+    - name: Test run 2
+      run: echo "This is test 2"
+      if: ${{ github.event.inputs.skipbuildjob == 'false' }}
+      
+    
