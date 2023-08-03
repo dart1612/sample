@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Test run 1
-      run: echo "This is test 1"
+      run: echo $github.event.inputs.skipbuildjob
     - name: Test run 2
       run: echo "This is test 2"
       if: ${{ github.event.inputs.skipbuildjob == 'false' }}
